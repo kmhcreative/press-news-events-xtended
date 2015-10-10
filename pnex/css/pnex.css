@@ -1,0 +1,54 @@
+
+.pnex_adv_search  {
+	display:block;
+	margin-bottom: 1em;
+}
+
+.pnex_adv_search div a.control {
+	font-weight: bold;
+	text-decoration:none;
+}
+.pnex_adv_search a.control:before {
+	font-family: monospace !important;
+	content: "+";
+	min-width: 	1.5em;
+	min-height:	1.5em;
+	margin-right: .5em;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	border: 1px solid #ccc;
+}
+.pnex_adv_search a.control.expand:before {
+	font-family: monospace !important;
+	content: "-";
+	min-width: 	1.5em;
+	min-height: 1.5em;
+	margin-right: .5em;
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	border: 1px solid #ccc;
+}
+	
+.pnex_adv_search form { 
+	border: 1px solid #ccc;
+	padding: 5px;
+}
+.pnex_adv_search form label {
+	display: inline-block; /* prevents checkbox on diff line than label */
+}
+	.pnex_adv_search form label.hide {
+		display: none;	/* prevents hidden inputs taking up space */
+	}
+.pnex_adv_search form.expand {
+	display: none;
+}
+.pnex_adv_search form .submit_box {
+	text-align: right;
+}
+
+
+
+
+

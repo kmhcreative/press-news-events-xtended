@@ -1,0 +1,165 @@
+/* ----------------------------------------------------------------------------
+	Settings page
+---------------------------------------------------------------------------- */
+
+.pne_settings_page {
+	label {
+		a {
+			color: #999;
+			font-style: italic;
+		}
+	}
+}
+
+/* ----------------------------------------------------------------------------
+	Date Picker
+---------------------------------------------------------------------------- */
+
+.datepicker {
+	position: relative;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	width: 176px;
+	height: 127px;
+	position: absolute;
+	cursor: default;
+	top: 0;
+	left: 0;
+	display: none;
+	
+	table {
+		border-collapse: collapse;
+		
+		th {
+			text-align: center;
+			color: #999;
+			font-weight: normal;
+			
+			tbody & {
+				text-align: left;
+			}
+		}
+
+		td {
+			text-align: right;
+			padding: 0;
+			margin: 0;
+			
+			tbody & {
+				text-align: left;
+			}
+		}
+		
+		tbody a {
+			display: block;
+		}
+	}
+
+	a {
+		color: #333;
+		text-decoration: none;
+		cursor: default;
+		outline: none;
+		&:hover {
+			color: #999;
+		}
+	}
+
+	.datepickerContainer {
+		background: #FFF;
+		border: 1px solid #CCC;
+		padding: 2px 5px;
+		position: absolute;
+	}
+
+	.datepickerHidden {
+		display: none;
+	}
+
+	.datepickerDays {
+		a {
+			width: 20px;
+			line-height: 16px;
+			height: 16px;
+			padding-right: 2px;
+		}
+		
+		.datepickerSelected {
+			background: #9D9;
+			&.datepickerNotInMonth {
+				background: #BDB;
+			}
+		}
+	}
+
+	.datepickerYears a,
+	.datepickerMonths a{
+		width: 44px;
+		line-height: 36px;
+		height: 36px;
+		text-align: center;
+	}
+
+	.datepickerNotInMonth a {
+		color: #666;
+	}
+
+
+	.datepickerYears .datepickerSelected,
+	.datepickerMonths .datepickerSelected{
+		background: #9D9;
+	}
+
+	.datepickerSpace div {
+		width: 20px;
+	}
+
+	.datepickerGoNext a,
+	.datepickerGoPrev a,
+	.datepickerMonth a {
+		text-align: center;
+		height: 20px;
+		line-height: 20px;
+	}
+
+	.datepickerGoNext a {
+		float: right;
+		width: 20px;
+	}
+
+	.datepickerGoPrev a {
+		float: left;
+		width: 20px;
+	}
+
+	.datepickerViewDays {
+		.datepickerMonths,
+		.datepickerYears {
+			display: none;
+		}
+	}
+
+	.datepickerViewMonths,
+	.datepickerViewYears {
+		.datepickerDays,
+		.datepickerYears,
+		.datepickerDoW {
+			display: none;
+		}
+	}
+
+	.datepickerDisabled a,
+	.datepickerDisabled.datepickerNotInMonth a {
+		color: #333;
+		&:hover {
+			color: #333;
+		}
+	}
+
+	.datepickerSpecial a {
+		background: #700;
+		&.datepickerSelected a {
+			background: #a00;
+		}
+	}
+}

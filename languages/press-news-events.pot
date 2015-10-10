@@ -1,0 +1,316 @@
+# Copyright (C) 2012 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/press-news-events\n"
+"POT-Creation-Date: 2012-04-12 21:13:10+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: custom-post-types/event.php:25 custom-post-types/event.php:26
+#: custom-post-types/event.php:29 custom-post-types/event.php:30
+#: settings.php:72 settings.php:123
+msgid "Event"
+msgid_plural "Events"
+msgstr[0] ""
+msgstr[1] ""
+
+#: custom-post-types/event.php:31 custom-post-types/event.php:32
+msgid "Add New Event"
+msgstr ""
+
+#: custom-post-types/event.php:33
+msgid "Edit Event"
+msgstr ""
+
+#: custom-post-types/event.php:34
+msgid "New Event"
+msgstr ""
+
+#: custom-post-types/event.php:35
+msgid "View Event"
+msgstr ""
+
+#: custom-post-types/event.php:36
+msgid "Search Events"
+msgstr ""
+
+#: custom-post-types/event.php:37
+msgid "No Events found"
+msgstr ""
+
+#: custom-post-types/event.php:38
+msgid "No Events found in Trash"
+msgstr ""
+
+#: custom-post-types/event.php:51 custom-post-types/news.php:41
+msgid "Options"
+msgstr ""
+
+#: custom-post-types/event.php:78
+msgid "Location:"
+msgstr ""
+
+#: custom-post-types/event.php:82
+msgid "Event Date:"
+msgstr ""
+
+#: custom-post-types/event.php:94
+msgid "Time:"
+msgstr ""
+
+#: custom-post-types/event.php:104
+msgid "All Day"
+msgstr ""
+
+#: custom-post-types/event.php:113
+msgid "6:30pm"
+msgstr ""
+
+#: custom-post-types/event.php:115
+msgctxt "starting time *to* ending time"
+msgid "to"
+msgstr ""
+
+#: custom-post-types/event.php:121
+msgid "9:30pm"
+msgstr ""
+
+#: custom-post-types/event.php:172 custom-post-types/news.php:107
+msgctxt "column header"
+msgid "Date"
+msgstr ""
+
+#: custom-post-types/event.php:269
+msgctxt "(an event being held) at [location name]"
+msgid "at <span class='location'>%s</span>"
+msgstr ""
+
+#: custom-post-types/news.php:17 custom-post-types/news.php:18
+#: custom-post-types/news.php:21 custom-post-types/news.php:22 settings.php:74
+#: settings.php:125
+msgid "News Story"
+msgid_plural "News Stories"
+msgstr[0] ""
+msgstr[1] ""
+
+#: custom-post-types/news.php:23 custom-post-types/news.php:24
+msgid "Add New News Story"
+msgstr ""
+
+#: custom-post-types/news.php:25
+msgid "Edit News Story"
+msgstr ""
+
+#: custom-post-types/news.php:26
+msgid "New News Story"
+msgstr ""
+
+#: custom-post-types/news.php:27
+msgid "View News Story"
+msgstr ""
+
+#: custom-post-types/news.php:28
+msgid "Search News Stories"
+msgstr ""
+
+#: custom-post-types/news.php:29
+msgid "No News Stories found"
+msgstr ""
+
+#: custom-post-types/news.php:30
+msgid "No News Stories found in Trash"
+msgstr ""
+
+#: custom-post-types/news.php:62
+msgid "Link:"
+msgstr ""
+
+#: custom-post-types/news.php:70
+msgid "link"
+msgstr ""
+
+#: custom-post-types/news.php:75
+msgid "News Date:"
+msgstr ""
+
+#: custom-post-types/news.php:108
+msgctxt "column header"
+msgid "Link"
+msgstr ""
+
+#: custom-post-types/press-release.php:24
+#: custom-post-types/press-release.php:25
+#: custom-post-types/press-release.php:28
+#: custom-post-types/press-release.php:29 settings.php:73 settings.php:124
+msgid "Press Release"
+msgid_plural "Press Releases"
+msgstr[0] ""
+msgstr[1] ""
+
+#: custom-post-types/press-release.php:30
+#: custom-post-types/press-release.php:31
+msgid "Add New Press Release"
+msgstr ""
+
+#: custom-post-types/press-release.php:32
+msgid "Edit Press Release"
+msgstr ""
+
+#: custom-post-types/press-release.php:33
+msgid "New Press Release"
+msgstr ""
+
+#: custom-post-types/press-release.php:34
+msgid "View Press Release"
+msgstr ""
+
+#: custom-post-types/press-release.php:35
+msgid "Search Press Releases"
+msgstr ""
+
+#: custom-post-types/press-release.php:36
+msgid "No Press Releases found"
+msgstr ""
+
+#: custom-post-types/press-release.php:37
+msgid "No Press Releases found in Trash"
+msgstr ""
+
+#: custom-post-types/press-release.php:46
+#: custom-post-types/press-release.php:56
+msgid "Press Release Boilerplate"
+msgstr ""
+
+#: custom-post-types/press-release.php:47
+msgid "Boilerplate"
+msgstr ""
+
+#: custom-post-types/press-release.php:57
+msgid ""
+"This press release boilerplate is shown at the bottom of all press "
+"releases.  Updating the boilerplate will update all past and future press "
+"releases."
+msgstr ""
+
+#: custom-post-types/press-release.php:64
+msgid "Save"
+msgstr ""
+
+#: custom-post-types/press-release.php:72
+msgid "boilerplate saved"
+msgstr ""
+
+#: custom-post-types/press-release.php:90
+msgid "Edit Boilerplate"
+msgstr ""
+
+#: index.php:117 index.php:124 index.php:128 index.php:129 index.php:140
+msgid "F j, Y"
+msgstr ""
+
+#: index.php:118
+msgid "H i"
+msgstr ""
+
+#: index.php:119
+msgid "F Y"
+msgstr ""
+
+#: index.php:120 index.php:132 index.php:133 index.php:136 index.php:137
+msgid "Y"
+msgstr ""
+
+#: index.php:125 index.php:141
+msgid "F j g:ia, Y"
+msgstr ""
+
+#: index.php:129
+msgid "g:ia"
+msgstr ""
+
+#: index.php:132 index.php:136
+msgid "F j"
+msgstr ""
+
+#: index.php:132
+msgid "j"
+msgstr ""
+
+#: index.php:133 index.php:137
+msgid "F j g:ia"
+msgstr ""
+
+#: index.php:133
+msgid "j g:ia"
+msgstr ""
+
+#: settings.php:17
+msgctxt "admin options page title"
+msgid "Press, News and Events Options"
+msgstr ""
+
+#: settings.php:18
+msgctxt "admin options page menu title"
+msgid "Press, News, Events"
+msgstr ""
+
+#: settings.php:27
+msgctxt "admin settings page title"
+msgid "Press, News and Events Settings"
+msgstr ""
+
+#: settings.php:36
+msgid "Save Settings"
+msgstr ""
+
+#: settings.php:52
+msgid "Custom Post Type Archives"
+msgstr ""
+
+#: settings.php:59
+msgid "Create an archive page for:"
+msgstr ""
+
+#: settings.php:67
+msgid ""
+"The plugin can create archive pages for each of the post types, similar to "
+"your blog index.  This is a handy way to display all you press, news and "
+"events.  But if you want to make your own page, using the same urls shown "
+"below, then these archives will conflict, and should be turned off.  If you "
+"do decide to keep them, you might be interested in creating <a href='http://"
+"codex.wordpress.org/Post_Types#Template_Files' target='_blank'>special "
+"template files</a> for each archive.  If for no other reason, it's good to "
+"change the top heading on the page."
+msgstr ""
+
+#: settings.php:102
+msgid "Add Information"
+msgstr ""
+
+#: settings.php:109
+msgid "Add info for:"
+msgstr ""
+
+#: settings.php:117
+msgid ""
+"The plugin can add post type specific information to pages and pages.  For "
+"instance, it can put the date and location in the content of each event."
+msgstr ""
+
+#: settings.php:152
+msgid "Press Release Options"
+msgstr ""
+
+#: settings.php:159
+msgid "Boilerplate:"
+msgstr ""
+
+#: settings.php:181
+msgid "Use a boilerplate for press releases"
+msgstr ""
