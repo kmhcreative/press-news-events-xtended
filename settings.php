@@ -72,7 +72,7 @@ class PNE_Settings {
 		);
 	}
 		
-	function auto_archive_settings() { ?>
+	public static function auto_archive_settings() { ?>
 		<p><?php _e("The plugin can create archive pages for each of the post types, similar to your blog index.  This is a handy way to display all you press, news and events.  But if you want to make your own page, using the same urls shown below, then these archives will conflict, and should be turned off.  If you do decide to keep them, you might be interested in creating <a href='http://codex.wordpress.org/Post_Types#Template_Files' target='_blank'>special template files</a> for each archive.  If for no other reason, it's good to change the top heading on the page.", 'press-news-events'); ?></p>
 	<?php }
 	
@@ -93,7 +93,7 @@ class PNE_Settings {
 		<?php }
 	}
 	
-	function auto_archive($slug) {
+	public static function auto_archive($slug) {
 		return in_array($slug, get_option('pne_settings_auto_archive', array('event', 'news', 'press-release')));
 	}
 	
@@ -143,7 +143,7 @@ class PNE_Settings {
 		<?php }
 	}
 	
-	function inject_meta($slug) {
+	public static function inject_meta($slug) {
 		return in_array($slug, get_option('pne_settings_inject_meta', array('event', 'news', 'press-release')));
 	}
 	
@@ -172,11 +172,11 @@ class PNE_Settings {
 		);	
 	}
 	
-	function press_releases_settings() { ?>
+	public static function press_releases_settings() { ?>
 		<!-- no directions -->
 	<?php }
 	
-	function press_releases_input() {
+	public static function press_releases_input() {
 		$options = get_option('pne_settings_press_releases', array(
 			'use_boilerplate'
 		));
@@ -194,12 +194,12 @@ class PNE_Settings {
 	
 	// TODO: flush rules
 	
-	function checkboxes_to_array($input) {
+	public static function checkboxes_to_array($input) {
 		Press_News_Events::flush_rules();
 		return is_array($input) ? array_keys($input) : array();
 	}
 	
-	function settings_link($links) { 
+	public static function settings_link($links) { 
 		$settings_link = '<a href="options-general.php?page=press-news-and-events-options">Settings</a>';
 		array_unshift($links, $settings_link); 
 		return $links; 

@@ -1,9 +1,10 @@
 === PNEX (Press-News-Events Xtended) ===  
 Contributors: kmhcreative, mattdeclaire, briankwa
 Tags: press releases, events, news, custom post type
-Requires at least: 3.3.1 and PHP 5.4
-Tested up to: 4.3.1
-Stable tag: 1.2
+Requires at least: 3.3.1
+Requires PHP: 7.1
+Tested up to: 5.5
+Stable tag: 1.3
 
 Create custom post types for press releases, references to external news stories, and events organized and filtered by custom categories.
 
@@ -15,8 +16,11 @@ Note: The original “Press, News, Events” plugin in the WordPress directory h
 
 == Installation ==
 
-1. Upload the `press-news-events-xtended` directory to the `/wp-content/plugins/` directory.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Download from GitHub repository
+2. Upload `press-news-events-xtended` 
+ a. Go to `Plugins -> Add New -> Upload Plugin` browse to and upload ZIP file or
+ b. Unzip directory and upload via FTP to the `/wp-content/plugins/` directory.
+3. Activate the plugin through the 'Plugins' menu in WordPress.
 
 You may want to customize your theme for these three post types.  For instance, you can create [specific single and archive templates](http://codex.wordpress.org/Post_Types#Template_Files) files.
 
@@ -37,6 +41,10 @@ I don’t know that.  AAAAAAAAAAAAAARGH!
 3. Global options for the plugin.
 
 == Changelog ==
+
+= 1.3 =
+* Code updated for PHP 7+ (tested up to 7.4.8)
+* Plugin can now be updated (including new auto-update) directly from GitHub
 
 = 1.2 =
 * Extended plugin to add categories and shortcodes for filtering results by those categories.

@@ -3,7 +3,7 @@
 Plugin Name: PNEX (Press-News-Events Xtended)
 Plugin URI:  https://github.com/kmhcreative/pnex
 Description: Create custom post types for press releases, references to external news stories, and events organized and filtered by custom categories.  Based on "Press, News, Events" plugin by Loud Dog (http://www.louddog.com)
-Version: 	 1.2.
+Version: 	 1.3
 Author: 	 K.M. Hansen
 Author URI:  http://www.kmhcreative.com
 License: 	 GPLv3
@@ -12,7 +12,7 @@ GitHub Plugin URI: https://github.com/kmhcreative/pnex
 GitHub Branch: master
 */
 
-define('PRESS_NEWS_EVENTS_VERSION', '1.2');
+define('PRESS_NEWS_EVENTS_VERSION', '1.3');
 
 new Press_News_Events;
 class Press_News_Events {
@@ -172,4 +172,13 @@ class Press_News_Events {
 		echo "<pre style='padding:5px;background-color:#EEE;white-space:pre-wrap;'>".htmlentities(print_r($var,1))."</pre>";
 		if ($die) die;
 	}
+}
+if ( is_admin() ) {
+	// We are on the back end
+	@require('plugin-update-checker/plugin-update-checker.php');
+		$PNEXUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+		'https://github.com/kmhcreative/press-news-events-xtended',
+			__FILE__,'pnex'
+		);
+		$PNEXUpdateChecker->getVcsApi()->enableReleaseAssets();
 }

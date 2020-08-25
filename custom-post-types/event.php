@@ -8,7 +8,6 @@ class PNE_Event extends PNE_Custom_Post_Type {
 	function __construct() {
 		parent::__construct();
 		
-//		if (PNE_Settings::auto_archive($this->slug)) {
 		if ( (new PNE_Settings)->auto_archive($this->slug) ) {
 			$this->new_rules();
 			add_filter('rewrite_rules_array', array($this, 'insert_rewrite_rules'));
