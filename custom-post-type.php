@@ -81,7 +81,7 @@ abstract class PNE_Custom_Post_Type {
 	
 	function inject_meta($content) {
 		global $post;
-		if ($post->post_type == $this->slug) {
+		if (isset($post->post_type) && $post->post_type == $this->slug) {
 			$content = do_shortcode("[$this->slug-meta]").$content;
 		}
 		return $content;

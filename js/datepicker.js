@@ -1,9 +1,898 @@
 /**
  *
  * Date picker
- * Author: Stefan Petre http://www.eyecon.ro/datepicker/
+ * Author: Stefan Petre www.eyecon.ro
  * 
  * Dual licensed under the MIT and GPL licenses
  * 
  */
-(function(a){var b=function(){var b={},c={years:"datepickerViewYears",moths:"datepickerViewMonths",days:"datepickerViewDays"},d={wrapper:'<div class="datepicker"><div class="datepickerBorderT" /><div class="datepickerBorderB" /><div class="datepickerBorderL" /><div class="datepickerBorderR" /><div class="datepickerBorderTL" /><div class="datepickerBorderTR" /><div class="datepickerBorderBL" /><div class="datepickerBorderBR" /><div class="datepickerContainer"><table cellspacing="0" cellpadding="0"><tbody><tr></tr></tbody></table></div></div>',head:["<td>",'<table cellspacing="0" cellpadding="0">',"<thead>","<tr>",'<th class="datepickerGoPrev"><a href="#"><span><%=prev%></span></a></th>','<th colspan="6" class="datepickerMonth"><a href="#"><span></span></a></th>','<th class="datepickerGoNext"><a href="#"><span><%=next%></span></a></th>',"</tr>",'<tr class="datepickerDoW">',"<th><span><%=week%></span></th>","<th><span><%=day1%></span></th>","<th><span><%=day2%></span></th>","<th><span><%=day3%></span></th>","<th><span><%=day4%></span></th>","<th><span><%=day5%></span></th>","<th><span><%=day6%></span></th>","<th><span><%=day7%></span></th>","</tr>","</thead>","</table></td>"],space:'<td class="datepickerSpace"><div></div></td>',days:['<tbody class="datepickerDays">',"<tr>",'<th class="datepickerWeek"><a href="#"><span><%=weeks[0].week%></span></a></th>','<td class="<%=weeks[0].days[0].classname%>"><a href="#"><span><%=weeks[0].days[0].text%></span></a></td>','<td class="<%=weeks[0].days[1].classname%>"><a href="#"><span><%=weeks[0].days[1].text%></span></a></td>','<td class="<%=weeks[0].days[2].classname%>"><a href="#"><span><%=weeks[0].days[2].text%></span></a></td>','<td class="<%=weeks[0].days[3].classname%>"><a href="#"><span><%=weeks[0].days[3].text%></span></a></td>','<td class="<%=weeks[0].days[4].classname%>"><a href="#"><span><%=weeks[0].days[4].text%></span></a></td>','<td class="<%=weeks[0].days[5].classname%>"><a href="#"><span><%=weeks[0].days[5].text%></span></a></td>','<td class="<%=weeks[0].days[6].classname%>"><a href="#"><span><%=weeks[0].days[6].text%></span></a></td>',"</tr>","<tr>",'<th class="datepickerWeek"><a href="#"><span><%=weeks[1].week%></span></a></th>','<td class="<%=weeks[1].days[0].classname%>"><a href="#"><span><%=weeks[1].days[0].text%></span></a></td>','<td class="<%=weeks[1].days[1].classname%>"><a href="#"><span><%=weeks[1].days[1].text%></span></a></td>','<td class="<%=weeks[1].days[2].classname%>"><a href="#"><span><%=weeks[1].days[2].text%></span></a></td>','<td class="<%=weeks[1].days[3].classname%>"><a href="#"><span><%=weeks[1].days[3].text%></span></a></td>','<td class="<%=weeks[1].days[4].classname%>"><a href="#"><span><%=weeks[1].days[4].text%></span></a></td>','<td class="<%=weeks[1].days[5].classname%>"><a href="#"><span><%=weeks[1].days[5].text%></span></a></td>','<td class="<%=weeks[1].days[6].classname%>"><a href="#"><span><%=weeks[1].days[6].text%></span></a></td>',"</tr>","<tr>",'<th class="datepickerWeek"><a href="#"><span><%=weeks[2].week%></span></a></th>','<td class="<%=weeks[2].days[0].classname%>"><a href="#"><span><%=weeks[2].days[0].text%></span></a></td>','<td class="<%=weeks[2].days[1].classname%>"><a href="#"><span><%=weeks[2].days[1].text%></span></a></td>','<td class="<%=weeks[2].days[2].classname%>"><a href="#"><span><%=weeks[2].days[2].text%></span></a></td>','<td class="<%=weeks[2].days[3].classname%>"><a href="#"><span><%=weeks[2].days[3].text%></span></a></td>','<td class="<%=weeks[2].days[4].classname%>"><a href="#"><span><%=weeks[2].days[4].text%></span></a></td>','<td class="<%=weeks[2].days[5].classname%>"><a href="#"><span><%=weeks[2].days[5].text%></span></a></td>','<td class="<%=weeks[2].days[6].classname%>"><a href="#"><span><%=weeks[2].days[6].text%></span></a></td>',"</tr>","<tr>",'<th class="datepickerWeek"><a href="#"><span><%=weeks[3].week%></span></a></th>','<td class="<%=weeks[3].days[0].classname%>"><a href="#"><span><%=weeks[3].days[0].text%></span></a></td>','<td class="<%=weeks[3].days[1].classname%>"><a href="#"><span><%=weeks[3].days[1].text%></span></a></td>','<td class="<%=weeks[3].days[2].classname%>"><a href="#"><span><%=weeks[3].days[2].text%></span></a></td>','<td class="<%=weeks[3].days[3].classname%>"><a href="#"><span><%=weeks[3].days[3].text%></span></a></td>','<td class="<%=weeks[3].days[4].classname%>"><a href="#"><span><%=weeks[3].days[4].text%></span></a></td>','<td class="<%=weeks[3].days[5].classname%>"><a href="#"><span><%=weeks[3].days[5].text%></span></a></td>','<td class="<%=weeks[3].days[6].classname%>"><a href="#"><span><%=weeks[3].days[6].text%></span></a></td>',"</tr>","<tr>",'<th class="datepickerWeek"><a href="#"><span><%=weeks[4].week%></span></a></th>','<td class="<%=weeks[4].days[0].classname%>"><a href="#"><span><%=weeks[4].days[0].text%></span></a></td>','<td class="<%=weeks[4].days[1].classname%>"><a href="#"><span><%=weeks[4].days[1].text%></span></a></td>','<td class="<%=weeks[4].days[2].classname%>"><a href="#"><span><%=weeks[4].days[2].text%></span></a></td>','<td class="<%=weeks[4].days[3].classname%>"><a href="#"><span><%=weeks[4].days[3].text%></span></a></td>','<td class="<%=weeks[4].days[4].classname%>"><a href="#"><span><%=weeks[4].days[4].text%></span></a></td>','<td class="<%=weeks[4].days[5].classname%>"><a href="#"><span><%=weeks[4].days[5].text%></span></a></td>','<td class="<%=weeks[4].days[6].classname%>"><a href="#"><span><%=weeks[4].days[6].text%></span></a></td>',"</tr>","<tr>",'<th class="datepickerWeek"><a href="#"><span><%=weeks[5].week%></span></a></th>','<td class="<%=weeks[5].days[0].classname%>"><a href="#"><span><%=weeks[5].days[0].text%></span></a></td>','<td class="<%=weeks[5].days[1].classname%>"><a href="#"><span><%=weeks[5].days[1].text%></span></a></td>','<td class="<%=weeks[5].days[2].classname%>"><a href="#"><span><%=weeks[5].days[2].text%></span></a></td>','<td class="<%=weeks[5].days[3].classname%>"><a href="#"><span><%=weeks[5].days[3].text%></span></a></td>','<td class="<%=weeks[5].days[4].classname%>"><a href="#"><span><%=weeks[5].days[4].text%></span></a></td>','<td class="<%=weeks[5].days[5].classname%>"><a href="#"><span><%=weeks[5].days[5].text%></span></a></td>','<td class="<%=weeks[5].days[6].classname%>"><a href="#"><span><%=weeks[5].days[6].text%></span></a></td>',"</tr>","</tbody>"],months:['<tbody class="<%=className%>">',"<tr>",'<td colspan="2"><a href="#"><span><%=data[0]%></span></a></td>','<td colspan="2"><a href="#"><span><%=data[1]%></span></a></td>','<td colspan="2"><a href="#"><span><%=data[2]%></span></a></td>','<td colspan="2"><a href="#"><span><%=data[3]%></span></a></td>',"</tr>","<tr>",'<td colspan="2"><a href="#"><span><%=data[4]%></span></a></td>','<td colspan="2"><a href="#"><span><%=data[5]%></span></a></td>','<td colspan="2"><a href="#"><span><%=data[6]%></span></a></td>','<td colspan="2"><a href="#"><span><%=data[7]%></span></a></td>',"</tr>","<tr>",'<td colspan="2"><a href="#"><span><%=data[8]%></span></a></td>','<td colspan="2"><a href="#"><span><%=data[9]%></span></a></td>','<td colspan="2"><a href="#"><span><%=data[10]%></span></a></td>','<td colspan="2"><a href="#"><span><%=data[11]%></span></a></td>',"</tr>","</tbody>"]},e={flat:false,starts:1,prev:"&#9664;",next:"&#9654;",lastSel:false,mode:"single",view:"days",calendars:1,format:"Y-m-d",position:"bottom",eventName:"click",onRender:function(){return{}},onChange:function(){return true},onShow:function(){return true},onBeforeShow:function(){return true},onHide:function(){return true},locale:{days:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],daysShort:["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"],daysMin:["Su","Mo","Tu","We","Th","Fr","Sa","Su"],months:["January","February","March","April","May","June","July","August","September","October","November","December"],monthsShort:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],weekMin:"wk"}},f=function(b){var c=a(b).data("datepicker");var e=a(b);var f=Math.floor(c.calendars/2),g,i,j,k,l=0,m,n,o,p,q,r;e.find("td>table tbody").remove();for(var s=0;s<c.calendars;s++){g=new Date(c.current);g.addMonths(-f+s);r=e.find("table").eq(s+1);switch(r[0].className){case"datepickerViewDays":j=h(g,"B, Y");break;case"datepickerViewMonths":j=g.getFullYear();break;case"datepickerViewYears":j=g.getFullYear()-6+" - "+(g.getFullYear()+5);break}r.find("thead tr:first th:eq(1) span").text(j);j=g.getFullYear()-6;i={data:[],className:"datepickerYears"};for(var t=0;t<12;t++){i.data.push(j+t)}q=tmpl(d.months.join(""),i);g.setDate(1);i={weeks:[],test:10};k=g.getMonth();var j=(g.getDay()-c.starts)%7;g.addDays(-(j+(j<0?7:0)));m=-1;l=0;while(l<42){o=parseInt(l/7,10);p=l%7;if(!i.weeks[o]){m=g.getWeekNumber();i.weeks[o]={week:m,days:[]}}i.weeks[o].days[p]={text:g.getDate(),classname:[]};if(k!=g.getMonth()){i.weeks[o].days[p].classname.push("datepickerNotInMonth")}if(g.getDay()==0){i.weeks[o].days[p].classname.push("datepickerSunday")}if(g.getDay()==6){i.weeks[o].days[p].classname.push("datepickerSaturday")}var u=c.onRender(g);var v=g.valueOf();if(u.selected||c.date==v||a.inArray(v,c.date)>-1||c.mode=="range"&&v>=c.date[0]&&v<=c.date[1]){i.weeks[o].days[p].classname.push("datepickerSelected")}if(u.disabled){i.weeks[o].days[p].classname.push("datepickerDisabled")}if(u.className){i.weeks[o].days[p].classname.push(u.className)}i.weeks[o].days[p].classname=i.weeks[o].days[p].classname.join(" ");l++;g.addDays(1)}q=tmpl(d.days.join(""),i)+q;i={data:c.locale.monthsShort,className:"datepickerMonths"};q=tmpl(d.months.join(""),i)+q;r.append(q)}},g=function(a,b){if(a.constructor==Date){return new Date(a)}var c=a.split(/\W+/);var d=b.split(/\W+/),e,f,g,h,i,j=new Date;for(var k=0;k<c.length;k++){switch(d[k]){case"d":case"e":e=parseInt(c[k],10);break;case"m":f=parseInt(c[k],10)-1;break;case"Y":case"y":g=parseInt(c[k],10);g+=g>100?0:g<29?2e3:1900;break;case"H":case"I":case"k":case"l":h=parseInt(c[k],10);break;case"P":case"p":if(/pm/i.test(c[k])&&h<12){h+=12}else if(/am/i.test(c[k])&&h>=12){h-=12}break;case"M":i=parseInt(c[k],10);break}}return new Date(g===undefined?j.getFullYear():g,f===undefined?j.getMonth():f,e===undefined?j.getDate():e,h===undefined?j.getHours():h,i===undefined?j.getMinutes():i,0)},h=function(a,b){var c=a.getMonth();var d=a.getDate();var e=a.getFullYear();var f=a.getWeekNumber();var g=a.getDay();var h={};var i=a.getHours();var j=i>=12;var k=j?i-12:i;var l=a.getDayOfYear();if(k==0){k=12}var m=a.getMinutes();var n=a.getSeconds();var o=b.split(""),p;for(var q=0;q<o.length;q++){p=o[q];switch(o[q]){case"a":p=a.getDayName();break;case"A":p=a.getDayName(true);break;case"b":p=a.getMonthName();break;case"B":p=a.getMonthName(true);break;case"C":p=1+Math.floor(e/100);break;case"d":p=d<10?"0"+d:d;break;case"e":p=d;break;case"H":p=i<10?"0"+i:i;break;case"I":p=k<10?"0"+k:k;break;case"j":p=l<100?l<10?"00"+l:"0"+l:l;break;case"k":p=i;break;case"l":p=k;break;case"m":p=c<9?"0"+(1+c):1+c;break;case"M":p=m<10?"0"+m:m;break;case"p":case"P":p=j?"PM":"AM";break;case"s":p=Math.floor(a.getTime()/1e3);break;case"S":p=n<10?"0"+n:n;break;case"u":p=g+1;break;case"w":p=g;break;case"y":p=(""+e).substr(2,2);break;case"Y":p=e;break}o[q]=p}return o.join("")},i=function(a){if(Date.prototype.tempDate){return}Date.prototype.tempDate=null;Date.prototype.months=a.months;Date.prototype.monthsShort=a.monthsShort;Date.prototype.days=a.days;Date.prototype.daysShort=a.daysShort;Date.prototype.getMonthName=function(a){return this[a?"months":"monthsShort"][this.getMonth()]};Date.prototype.getDayName=function(a){return this[a?"days":"daysShort"][this.getDay()]};Date.prototype.addDays=function(a){this.setDate(this.getDate()+a);this.tempDate=this.getDate()};Date.prototype.addMonths=function(a){if(this.tempDate==null){this.tempDate=this.getDate()}this.setDate(1);this.setMonth(this.getMonth()+a);this.setDate(Math.min(this.tempDate,this.getMaxDays()))};Date.prototype.addYears=function(a){if(this.tempDate==null){this.tempDate=this.getDate()}this.setDate(1);this.setFullYear(this.getFullYear()+a);this.setDate(Math.min(this.tempDate,this.getMaxDays()))};Date.prototype.getMaxDays=function(){var a=new Date(Date.parse(this)),b=28,c;c=a.getMonth();b=28;while(a.getMonth()==c){b++;a.setDate(b)}return b-1};Date.prototype.getFirstDay=function(){var a=new Date(Date.parse(this));a.setDate(1);return a.getDay()};Date.prototype.getWeekNumber=function(){var a=new Date(this);a.setDate(a.getDate()-(a.getDay()+6)%7+3);var b=a.valueOf();a.setMonth(0);a.setDate(4);return Math.round((b-a.valueOf())/6048e5)+1};Date.prototype.getDayOfYear=function(){var a=new Date(this.getFullYear(),this.getMonth(),this.getDate(),0,0,0);var b=new Date(this.getFullYear(),0,0,0,0,0);var c=a-b;return Math.floor(c/24*60*60*1e3)}},j=function(b){var c=a(b).data("datepicker");var d=a("#"+c.id);if(!c.extraHeight){var e=a(b).find("div");c.extraHeight=e.get(0).offsetHeight+e.get(1).offsetHeight;c.extraWidth=e.get(2).offsetWidth+e.get(3).offsetWidth}var f=d.find("table:first").get(0);var g=f.offsetWidth;var h=f.offsetHeight;d.css({width:g+c.extraWidth+"px",height:h+c.extraHeight+"px"}).find("div.datepickerContainer").css({width:g+"px",height:h+"px"})},k=function(b){if(a(b.target).is("span")){b.target=b.target.parentNode}var c=a(b.target);if(c.is("a")){b.target.blur();if(c.hasClass("datepickerDisabled")){return false}var d=a(this).data("datepicker");var e=c.parent();var g=e.parent().parent().parent();var i=a("table",this).index(g.get(0))-1;var j=new Date(d.current);var k=false;var m=false;if(e.is("th")){if(e.hasClass("datepickerWeek")&&d.mode=="range"&&!e.next().hasClass("datepickerDisabled")){var n=parseInt(e.next().text(),10);j.addMonths(i-Math.floor(d.calendars/2));if(e.next().hasClass("datepickerNotInMonth")){j.addMonths(n>15?-1:1)}j.setDate(n);d.date[0]=j.setHours(0,0,0,0).valueOf();j.setHours(23,59,59,0);j.addDays(6);d.date[1]=j.valueOf();m=true;k=true;d.lastSel=false}else if(e.hasClass("datepickerMonth")){j.addMonths(i-Math.floor(d.calendars/2));switch(g.get(0).className){case"datepickerViewDays":g.get(0).className="datepickerViewMonths";c.find("span").text(j.getFullYear());break;case"datepickerViewMonths":g.get(0).className="datepickerViewYears";c.find("span").text(j.getFullYear()-6+" - "+(j.getFullYear()+5));break;case"datepickerViewYears":g.get(0).className="datepickerViewDays";c.find("span").text(h(j,"B, Y"));break}}else if(e.parent().parent().is("thead")){switch(g.get(0).className){case"datepickerViewDays":d.current.addMonths(e.hasClass("datepickerGoPrev")?-1:1);break;case"datepickerViewMonths":d.current.addYears(e.hasClass("datepickerGoPrev")?-1:1);break;case"datepickerViewYears":d.current.addYears(e.hasClass("datepickerGoPrev")?-12:12);break}m=true}}else if(e.is("td")&&!e.hasClass("datepickerDisabled")){switch(g.get(0).className){case"datepickerViewMonths":d.current.setMonth(g.find("tbody.datepickerMonths td").index(e));d.current.setFullYear(parseInt(g.find("thead th.datepickerMonth span").text(),10));d.current.addMonths(Math.floor(d.calendars/2)-i);g.get(0).className="datepickerViewDays";break;case"datepickerViewYears":d.current.setFullYear(parseInt(c.text(),10));g.get(0).className="datepickerViewMonths";break;default:var n=parseInt(c.text(),10);j.addMonths(i-Math.floor(d.calendars/2));if(e.hasClass("datepickerNotInMonth")){j.addMonths(n>15?-1:1)}j.setDate(n);switch(d.mode){case"multiple":n=j.setHours(0,0,0,0).valueOf();if(a.inArray(n,d.date)>-1){a.each(d.date,function(a,b){if(b==n){d.date.splice(a,1);return false}})}else{d.date.push(n)}break;case"range":if(!d.lastSel){d.date[0]=j.setHours(0,0,0,0).valueOf()}n=j.setHours(23,59,59,0).valueOf();if(n<d.date[0]){d.date[1]=d.date[0]+86399e3;d.date[0]=n-86399e3}else{d.date[1]=n}d.lastSel=!d.lastSel;break;default:d.date=j.valueOf();break}break}m=true;k=true}if(m){f(this)}if(k){d.onChange.apply(this,l(d))}}return false},l=function(b){var c;if(b.mode=="single"){c=new Date(b.date);return[h(c,b.format),c,b.el]}else{c=[[],[],b.el];a.each(b.date,function(a,d){var e=new Date(d);c[0].push(h(e,b.format));c[1].push(e)});return c}},m=function(){var a=document.compatMode=="CSS1Compat";return{l:window.pageXOffset||(a?document.documentElement.scrollLeft:document.body.scrollLeft),t:window.pageYOffset||(a?document.documentElement.scrollTop:document.body.scrollTop),w:window.innerWidth||(a?document.documentElement.clientWidth:document.body.clientWidth),h:window.innerHeight||(a?document.documentElement.clientHeight:document.body.clientHeight)}},n=function(a,b,c){if(a==b){return true}if(a.contains){return a.contains(b)}if(a.compareDocumentPosition){return!!(a.compareDocumentPosition(b)&16)}var d=b.parentNode;while(d&&d!=c){if(d==a)return true;d=d.parentNode}return false},o=function(b){var c=a("#"+a(this).data("datepickerId"));if(!c.is(":visible")){var d=c.get(0);f(d);var e=c.data("datepicker");e.onBeforeShow.apply(this,[c.get(0)]);var g=a(this).offset();var h=m();var i=g.top;var k=g.left;var l=a.curCSS(d,"display");c.css({visibility:"hidden",display:"block"});j(d);switch(e.position){case"top":i-=d.offsetHeight;break;case"left":k-=d.offsetWidth;break;case"right":k+=this.offsetWidth;break;case"bottom":i+=this.offsetHeight;break}if(i+d.offsetHeight>h.t+h.h){i=g.top-d.offsetHeight}if(i<h.t){i=g.top+this.offsetHeight+d.offsetHeight}if(k+d.offsetWidth>h.l+h.w){k=g.left-d.offsetWidth}if(k<h.l){k=g.left+this.offsetWidth}c.css({visibility:"visible",display:"block",top:i+"px",left:k+"px"});if(e.onShow.apply(this,[c.get(0)])!=false){c.show()}a(document).bind("mousedown",{cal:c,trigger:this},p)}return false},p=function(b){if(b.target!=b.data.trigger&&!n(b.data.cal.get(0),b.target,b.data.cal.get(0))){if(b.data.cal.data("datepicker").onHide.apply(this,[b.data.cal.get(0)])!=false){b.data.cal.hide()}a(document).unbind("mousedown",p)}};return{init:function(b){b=a.extend({},e,b||{});i(b.locale);b.calendars=Math.max(1,parseInt(b.calendars,10)||1);b.mode=/single|multiple|range/.test(b.mode)?b.mode:"single";return this.each(function(){if(!a(this).data("datepicker")){b.el=this;if(b.date.constructor==String){b.date=g(b.date,b.format);b.date.setHours(0,0,0,0)}if(b.mode!="single"){if(b.date.constructor!=Array){b.date=[b.date.valueOf()];if(b.mode=="range"){b.date.push((new Date(b.date[0])).setHours(23,59,59,0).valueOf())}}else{for(var e=0;e<b.date.length;e++){b.date[e]=g(b.date[e],b.format).setHours(0,0,0,0).valueOf()}if(b.mode=="range"){b.date[1]=(new Date(b.date[1])).setHours(23,59,59,0).valueOf()}}}else{b.date=b.date.valueOf()}if(!b.current){b.current=new Date}else{b.current=g(b.current,b.format)}b.current.setDate(1);b.current.setHours(0,0,0,0);var h="datepicker_"+parseInt(Math.random()*1e3),i;b.id=h;a(this).data("datepickerId",b.id);var l=a(d.wrapper).attr("id",h).bind("click",k).data("datepicker",b);if(b.className){l.addClass(b.className)}var m="";for(var e=0;e<b.calendars;e++){i=b.starts;if(e>0){m+=d.space}m+=tmpl(d.head.join(""),{week:b.locale.weekMin,prev:b.prev,next:b.next,day1:b.locale.daysMin[i++%7],day2:b.locale.daysMin[i++%7],day3:b.locale.daysMin[i++%7],day4:b.locale.daysMin[i++%7],day5:b.locale.daysMin[i++%7],day6:b.locale.daysMin[i++%7],day7:b.locale.daysMin[i++%7]})}l.find("tr:first").append(m).find("table").addClass(c[b.view]);f(l.get(0));if(b.flat){l.appendTo(this).show().css("position","relative");j(l.get(0))}else{l.appendTo(document.body);a(this).bind(b.eventName,o)}}})},showPicker:function(){return this.each(function(){if(a(this).data("datepickerId")){o.apply(this)}})},hidePicker:function(){return this.each(function(){if(a(this).data("datepickerId")){a("#"+a(this).data("datepickerId")).hide()}})},setDate:function(b,c){return this.each(function(){if(a(this).data("datepickerId")){var d=a("#"+a(this).data("datepickerId"));var e=d.data("datepicker");e.date=b;if(e.date.constructor==String){e.date=g(e.date,e.format);e.date.setHours(0,0,0,0)}if(e.mode!="single"){if(e.date.constructor!=Array){e.date=[e.date.valueOf()];if(e.mode=="range"){e.date.push((new Date(e.date[0])).setHours(23,59,59,0).valueOf())}}else{for(var h=0;h<e.date.length;h++){e.date[h]=g(e.date[h],e.format).setHours(0,0,0,0).valueOf()}if(e.mode=="range"){e.date[1]=(new Date(e.date[1])).setHours(23,59,59,0).valueOf()}}}else{e.date=e.date.valueOf()}if(c){e.current=new Date(e.mode!="single"?e.date[0]:e.date)}f(d.get(0))}})},getDate:function(b){if(this.size()>0){return l(a("#"+a(this).data("datepickerId")).data("datepicker"))[b?0:1]}},clear:function(){return this.each(function(){if(a(this).data("datepickerId")){var b=a("#"+a(this).data("datepickerId"));var c=b.data("datepicker");if(c.mode!="single"){c.date=[];f(b.get(0))}}})},fixLayout:function(){return this.each(function(){if(a(this).data("datepickerId")){var b=a("#"+a(this).data("datepickerId"));var c=b.data("datepicker");if(c.flat){j(b.get(0))}}})}}}();a.fn.extend({DatePicker:b.init,DatePickerHide:b.hidePicker,DatePickerShow:b.showPicker,DatePickerSetDate:b.setDate,DatePickerGetDate:b.getDate,DatePickerClear:b.clear,DatePickerLayout:b.fixLayout})})(jQuery);(function(){var a={};this.tmpl=function b(c,d){var e=!/\W/.test(c)?a[c]=a[c]||b(document.getElementById(c).innerHTML):new Function("obj","var p=[],print=function(){p.push.apply(p,arguments);};"+"with(obj){p.push('"+c.replace(/[\r\t\n]/g," ").split("<%").join("\t").replace(/((^|%>)[^\t]*)'/g,"$1\r").replace(/\t=(.*?)%>/g,"',$1,'").split("\t").join("');").split("%>").join("p.push('").split("\r").join("\\'")+"');}return p.join('');");return d?e(d):e}})()
+(function ($) {
+	var DatePicker = function () {
+		var	ids = {},
+			views = {
+				years: 'datepickerViewYears',
+				moths: 'datepickerViewMonths',
+				days: 'datepickerViewDays'
+			},
+			tpl = {
+				wrapper: '<div class="datepicker"><div class="datepickerBorderT" /><div class="datepickerBorderB" /><div class="datepickerBorderL" /><div class="datepickerBorderR" /><div class="datepickerBorderTL" /><div class="datepickerBorderTR" /><div class="datepickerBorderBL" /><div class="datepickerBorderBR" /><div class="datepickerContainer"><table cellspacing="0" cellpadding="0"><tbody><tr></tr></tbody></table></div></div>',
+				head: [
+					'<td>',
+					'<table cellspacing="0" cellpadding="0">',
+						'<thead>',
+							'<tr>',
+								'<th class="datepickerGoPrev"><a href="#"><span><%=prev%></span></a></th>',
+								'<th colspan="6" class="datepickerMonth"><a href="#"><span></span></a></th>',
+								'<th class="datepickerGoNext"><a href="#"><span><%=next%></span></a></th>',
+							'</tr>',
+							'<tr class="datepickerDoW">',
+								'<th><span><%=week%></span></th>',
+								'<th><span><%=day1%></span></th>',
+								'<th><span><%=day2%></span></th>',
+								'<th><span><%=day3%></span></th>',
+								'<th><span><%=day4%></span></th>',
+								'<th><span><%=day5%></span></th>',
+								'<th><span><%=day6%></span></th>',
+								'<th><span><%=day7%></span></th>',
+							'</tr>',
+						'</thead>',
+					'</table></td>'
+				],
+				space : '<td class="datepickerSpace"><div></div></td>',
+				days: [
+					'<tbody class="datepickerDays">',
+						'<tr>',
+							'<th class="datepickerWeek"><a href="#"><span><%=weeks[0].week%></span></a></th>',
+							'<td class="<%=weeks[0].days[0].classname%>"><a href="#"><span><%=weeks[0].days[0].text%></span></a></td>',
+							'<td class="<%=weeks[0].days[1].classname%>"><a href="#"><span><%=weeks[0].days[1].text%></span></a></td>',
+							'<td class="<%=weeks[0].days[2].classname%>"><a href="#"><span><%=weeks[0].days[2].text%></span></a></td>',
+							'<td class="<%=weeks[0].days[3].classname%>"><a href="#"><span><%=weeks[0].days[3].text%></span></a></td>',
+							'<td class="<%=weeks[0].days[4].classname%>"><a href="#"><span><%=weeks[0].days[4].text%></span></a></td>',
+							'<td class="<%=weeks[0].days[5].classname%>"><a href="#"><span><%=weeks[0].days[5].text%></span></a></td>',
+							'<td class="<%=weeks[0].days[6].classname%>"><a href="#"><span><%=weeks[0].days[6].text%></span></a></td>',
+						'</tr>',
+						'<tr>',
+							'<th class="datepickerWeek"><a href="#"><span><%=weeks[1].week%></span></a></th>',
+							'<td class="<%=weeks[1].days[0].classname%>"><a href="#"><span><%=weeks[1].days[0].text%></span></a></td>',
+							'<td class="<%=weeks[1].days[1].classname%>"><a href="#"><span><%=weeks[1].days[1].text%></span></a></td>',
+							'<td class="<%=weeks[1].days[2].classname%>"><a href="#"><span><%=weeks[1].days[2].text%></span></a></td>',
+							'<td class="<%=weeks[1].days[3].classname%>"><a href="#"><span><%=weeks[1].days[3].text%></span></a></td>',
+							'<td class="<%=weeks[1].days[4].classname%>"><a href="#"><span><%=weeks[1].days[4].text%></span></a></td>',
+							'<td class="<%=weeks[1].days[5].classname%>"><a href="#"><span><%=weeks[1].days[5].text%></span></a></td>',
+							'<td class="<%=weeks[1].days[6].classname%>"><a href="#"><span><%=weeks[1].days[6].text%></span></a></td>',
+						'</tr>',
+						'<tr>',
+							'<th class="datepickerWeek"><a href="#"><span><%=weeks[2].week%></span></a></th>',
+							'<td class="<%=weeks[2].days[0].classname%>"><a href="#"><span><%=weeks[2].days[0].text%></span></a></td>',
+							'<td class="<%=weeks[2].days[1].classname%>"><a href="#"><span><%=weeks[2].days[1].text%></span></a></td>',
+							'<td class="<%=weeks[2].days[2].classname%>"><a href="#"><span><%=weeks[2].days[2].text%></span></a></td>',
+							'<td class="<%=weeks[2].days[3].classname%>"><a href="#"><span><%=weeks[2].days[3].text%></span></a></td>',
+							'<td class="<%=weeks[2].days[4].classname%>"><a href="#"><span><%=weeks[2].days[4].text%></span></a></td>',
+							'<td class="<%=weeks[2].days[5].classname%>"><a href="#"><span><%=weeks[2].days[5].text%></span></a></td>',
+							'<td class="<%=weeks[2].days[6].classname%>"><a href="#"><span><%=weeks[2].days[6].text%></span></a></td>',
+						'</tr>',
+						'<tr>',
+							'<th class="datepickerWeek"><a href="#"><span><%=weeks[3].week%></span></a></th>',
+							'<td class="<%=weeks[3].days[0].classname%>"><a href="#"><span><%=weeks[3].days[0].text%></span></a></td>',
+							'<td class="<%=weeks[3].days[1].classname%>"><a href="#"><span><%=weeks[3].days[1].text%></span></a></td>',
+							'<td class="<%=weeks[3].days[2].classname%>"><a href="#"><span><%=weeks[3].days[2].text%></span></a></td>',
+							'<td class="<%=weeks[3].days[3].classname%>"><a href="#"><span><%=weeks[3].days[3].text%></span></a></td>',
+							'<td class="<%=weeks[3].days[4].classname%>"><a href="#"><span><%=weeks[3].days[4].text%></span></a></td>',
+							'<td class="<%=weeks[3].days[5].classname%>"><a href="#"><span><%=weeks[3].days[5].text%></span></a></td>',
+							'<td class="<%=weeks[3].days[6].classname%>"><a href="#"><span><%=weeks[3].days[6].text%></span></a></td>',
+						'</tr>',
+						'<tr>',
+							'<th class="datepickerWeek"><a href="#"><span><%=weeks[4].week%></span></a></th>',
+							'<td class="<%=weeks[4].days[0].classname%>"><a href="#"><span><%=weeks[4].days[0].text%></span></a></td>',
+							'<td class="<%=weeks[4].days[1].classname%>"><a href="#"><span><%=weeks[4].days[1].text%></span></a></td>',
+							'<td class="<%=weeks[4].days[2].classname%>"><a href="#"><span><%=weeks[4].days[2].text%></span></a></td>',
+							'<td class="<%=weeks[4].days[3].classname%>"><a href="#"><span><%=weeks[4].days[3].text%></span></a></td>',
+							'<td class="<%=weeks[4].days[4].classname%>"><a href="#"><span><%=weeks[4].days[4].text%></span></a></td>',
+							'<td class="<%=weeks[4].days[5].classname%>"><a href="#"><span><%=weeks[4].days[5].text%></span></a></td>',
+							'<td class="<%=weeks[4].days[6].classname%>"><a href="#"><span><%=weeks[4].days[6].text%></span></a></td>',
+						'</tr>',
+						'<tr>',
+							'<th class="datepickerWeek"><a href="#"><span><%=weeks[5].week%></span></a></th>',
+							'<td class="<%=weeks[5].days[0].classname%>"><a href="#"><span><%=weeks[5].days[0].text%></span></a></td>',
+							'<td class="<%=weeks[5].days[1].classname%>"><a href="#"><span><%=weeks[5].days[1].text%></span></a></td>',
+							'<td class="<%=weeks[5].days[2].classname%>"><a href="#"><span><%=weeks[5].days[2].text%></span></a></td>',
+							'<td class="<%=weeks[5].days[3].classname%>"><a href="#"><span><%=weeks[5].days[3].text%></span></a></td>',
+							'<td class="<%=weeks[5].days[4].classname%>"><a href="#"><span><%=weeks[5].days[4].text%></span></a></td>',
+							'<td class="<%=weeks[5].days[5].classname%>"><a href="#"><span><%=weeks[5].days[5].text%></span></a></td>',
+							'<td class="<%=weeks[5].days[6].classname%>"><a href="#"><span><%=weeks[5].days[6].text%></span></a></td>',
+						'</tr>',
+					'</tbody>'
+				],
+				months: [
+					'<tbody class="<%=className%>">',
+						'<tr>',
+							'<td colspan="2"><a href="#"><span><%=data[0]%></span></a></td>',
+							'<td colspan="2"><a href="#"><span><%=data[1]%></span></a></td>',
+							'<td colspan="2"><a href="#"><span><%=data[2]%></span></a></td>',
+							'<td colspan="2"><a href="#"><span><%=data[3]%></span></a></td>',
+						'</tr>',
+						'<tr>',
+							'<td colspan="2"><a href="#"><span><%=data[4]%></span></a></td>',
+							'<td colspan="2"><a href="#"><span><%=data[5]%></span></a></td>',
+							'<td colspan="2"><a href="#"><span><%=data[6]%></span></a></td>',
+							'<td colspan="2"><a href="#"><span><%=data[7]%></span></a></td>',
+						'</tr>',
+						'<tr>',
+							'<td colspan="2"><a href="#"><span><%=data[8]%></span></a></td>',
+							'<td colspan="2"><a href="#"><span><%=data[9]%></span></a></td>',
+							'<td colspan="2"><a href="#"><span><%=data[10]%></span></a></td>',
+							'<td colspan="2"><a href="#"><span><%=data[11]%></span></a></td>',
+						'</tr>',
+					'</tbody>'
+				]
+			},
+			defaults = {
+				flat: false,
+				starts: 1,
+//				prev: '&#9664;',	// pulls emojis from remote server
+//				next: '&#9654;',	// pulls emojis from remove server
+				prev: '',			// styled in admin.css
+				next: '',			// styled in admin.css
+				lastSel: false,
+				mode: 'single',
+				view: 'days',
+				calendars: 1,
+				format: 'Y-m-d',
+				position: 'bottom',
+				eventName: 'click',
+				onRender: function(){return {};},
+				onChange: function(){return true;},
+				onShow: function(){return true;},
+				onBeforeShow: function(){return true;},
+				onHide: function(){return true;},
+				locale: {
+					days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+					daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+					daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+					months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+					monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+					weekMin: 'wk'
+				}
+			},
+			fill = function(el) {
+				var options = $(el).data('datepicker');
+				var cal = $(el);
+				var currentCal = Math.floor(options.calendars/2), date, data, dow, month, cnt = 0, week, days, indic, indic2, html, tblCal;
+				cal.find('td>table tbody').remove();
+				for (var i = 0; i < options.calendars; i++) {
+					date = new Date(options.current);
+					date.addMonths(-currentCal + i);
+					tblCal = cal.find('table').eq(i+1);
+					switch (tblCal[0].className) {
+						case 'datepickerViewDays':
+							dow = formatDate(date, 'B, Y');
+							break;
+						case 'datepickerViewMonths':
+							dow = date.getFullYear();
+							break;
+						case 'datepickerViewYears':
+							dow = (date.getFullYear()-6) + ' - ' + (date.getFullYear()+5);
+							break;
+					} 
+					tblCal.find('thead tr:first th:eq(1) span').text(dow);
+					dow = date.getFullYear()-6;
+					data = {
+						data: [],
+						className: 'datepickerYears'
+					}
+					for ( var j = 0; j < 12; j++) {
+						data.data.push(dow + j);
+					}
+					html = tmpl(tpl.months.join(''), data);
+					date.setDate(1);
+					data = {weeks:[], test: 10};
+					month = date.getMonth();
+					var dow = (date.getDay() - options.starts) % 7;
+					date.addDays(-(dow + (dow < 0 ? 7 : 0)));
+					week = -1;
+					cnt = 0;
+					while (cnt < 42) {
+						indic = parseInt(cnt/7,10);
+						indic2 = cnt%7;
+						if (!data.weeks[indic]) {
+							week = date.getWeekNumber();
+							data.weeks[indic] = {
+								week: week,
+								days: []
+							};
+						}
+						data.weeks[indic].days[indic2] = {
+							text: date.getDate(),
+							classname: []
+						};
+						if (month != date.getMonth()) {
+							data.weeks[indic].days[indic2].classname.push('datepickerNotInMonth');
+						}
+						if (date.getDay() == 0) {
+							data.weeks[indic].days[indic2].classname.push('datepickerSunday');
+						}
+						if (date.getDay() == 6) {
+							data.weeks[indic].days[indic2].classname.push('datepickerSaturday');
+						}
+						var fromUser = options.onRender(date);
+						var val = date.valueOf();
+						if (fromUser.selected || options.date == val || $.inArray(val, options.date) > -1 || (options.mode == 'range' && val >= options.date[0] && val <= options.date[1])) {
+							data.weeks[indic].days[indic2].classname.push('datepickerSelected');
+						}
+						if (fromUser.disabled) {
+							data.weeks[indic].days[indic2].classname.push('datepickerDisabled');
+						}
+						if (fromUser.className) {
+							data.weeks[indic].days[indic2].classname.push(fromUser.className);
+						}
+						data.weeks[indic].days[indic2].classname = data.weeks[indic].days[indic2].classname.join(' ');
+						cnt++;
+						date.addDays(1);
+					}
+					html = tmpl(tpl.days.join(''), data) + html;
+					data = {
+						data: options.locale.monthsShort,
+						className: 'datepickerMonths'
+					};
+					html = tmpl(tpl.months.join(''), data) + html;
+					tblCal.append(html);
+				}
+			},
+			parseDate = function (date, format) {
+				if (date.constructor == Date) {
+					return new Date(date);
+				}
+				var parts = date.split(/\W+/);
+				var against = format.split(/\W+/), d, m, y, h, min, now = new Date();
+				for (var i = 0; i < parts.length; i++) {
+					switch (against[i]) {
+						case 'd':
+						case 'e':
+							d = parseInt(parts[i],10);
+							break;
+						case 'm':
+							m = parseInt(parts[i], 10)-1;
+							break;
+						case 'Y':
+						case 'y':
+							y = parseInt(parts[i], 10);
+							y += y > 100 ? 0 : (y < 29 ? 2000 : 1900);
+							break;
+						case 'H':
+						case 'I':
+						case 'k':
+						case 'l':
+							h = parseInt(parts[i], 10);
+							break;
+						case 'P':
+						case 'p':
+							if (/pm/i.test(parts[i]) && h < 12) {
+								h += 12;
+							} else if (/am/i.test(parts[i]) && h >= 12) {
+								h -= 12;
+							}
+							break;
+						case 'M':
+							min = parseInt(parts[i], 10);
+							break;
+					}
+				}
+				return new Date(
+					y === undefined ? now.getFullYear() : y,
+					m === undefined ? now.getMonth() : m,
+					d === undefined ? now.getDate() : d,
+					h === undefined ? now.getHours() : h,
+					min === undefined ? now.getMinutes() : min,
+					0
+				);
+			},
+			formatDate = function(date, format) {
+				var m = date.getMonth();
+				var d = date.getDate();
+				var y = date.getFullYear();
+				var wn = date.getWeekNumber();
+				var w = date.getDay();
+				var s = {};
+				var hr = date.getHours();
+				var pm = (hr >= 12);
+				var ir = (pm) ? (hr - 12) : hr;
+				var dy = date.getDayOfYear();
+				if (ir == 0) {
+					ir = 12;
+				}
+				var min = date.getMinutes();
+				var sec = date.getSeconds();
+				var parts = format.split(''), part;
+				for ( var i = 0; i < parts.length; i++ ) {
+					part = parts[i];
+					switch (parts[i]) {
+						case 'a':
+							part = date.getDayName();
+							break;
+						case 'A':
+							part = date.getDayName(true);
+							break;
+						case 'b':
+							part = date.getMonthName();
+							break;
+						case 'B':
+							part = date.getMonthName(true);
+							break;
+						case 'C':
+							part = 1 + Math.floor(y / 100);
+							break;
+						case 'd':
+							part = (d < 10) ? ("0" + d) : d;
+							break;
+						case 'e':
+							part = d;
+							break;
+						case 'H':
+							part = (hr < 10) ? ("0" + hr) : hr;
+							break;
+						case 'I':
+							part = (ir < 10) ? ("0" + ir) : ir;
+							break;
+						case 'j':
+							part = (dy < 100) ? ((dy < 10) ? ("00" + dy) : ("0" + dy)) : dy;
+							break;
+						case 'k':
+							part = hr;
+							break;
+						case 'l':
+							part = ir;
+							break;
+						case 'm':
+							part = (m < 9) ? ("0" + (1+m)) : (1+m);
+							break;
+						case 'M':
+							part = (min < 10) ? ("0" + min) : min;
+							break;
+						case 'p':
+						case 'P':
+							part = pm ? "PM" : "AM";
+							break;
+						case 's':
+							part = Math.floor(date.getTime() / 1000);
+							break;
+						case 'S':
+							part = (sec < 10) ? ("0" + sec) : sec;
+							break;
+						case 'u':
+							part = w + 1;
+							break;
+						case 'w':
+							part = w;
+							break;
+						case 'y':
+							part = ('' + y).substr(2, 2);
+							break;
+						case 'Y':
+							part = y;
+							break;
+					}
+					parts[i] = part;
+				}
+				return parts.join('');
+			},
+			extendDate = function(options) {
+				if (Date.prototype.tempDate) {
+					return;
+				}
+				Date.prototype.tempDate = null;
+				Date.prototype.months = options.months;
+				Date.prototype.monthsShort = options.monthsShort;
+				Date.prototype.days = options.days;
+				Date.prototype.daysShort = options.daysShort;
+				Date.prototype.getMonthName = function(fullName) {
+					return this[fullName ? 'months' : 'monthsShort'][this.getMonth()];
+				};
+				Date.prototype.getDayName = function(fullName) {
+					return this[fullName ? 'days' : 'daysShort'][this.getDay()];
+				};
+				Date.prototype.addDays = function (n) {
+					this.setDate(this.getDate() + n);
+					this.tempDate = this.getDate();
+				};
+				Date.prototype.addMonths = function (n) {
+					if (this.tempDate == null) {
+						this.tempDate = this.getDate();
+					}
+					this.setDate(1);
+					this.setMonth(this.getMonth() + n);
+					this.setDate(Math.min(this.tempDate, this.getMaxDays()));
+				};
+				Date.prototype.addYears = function (n) {
+					if (this.tempDate == null) {
+						this.tempDate = this.getDate();
+					}
+					this.setDate(1);
+					this.setFullYear(this.getFullYear() + n);
+					this.setDate(Math.min(this.tempDate, this.getMaxDays()));
+				};
+				Date.prototype.getMaxDays = function() {
+					var tmpDate = new Date(Date.parse(this)),
+						d = 28, m;
+					m = tmpDate.getMonth();
+					d = 28;
+					while (tmpDate.getMonth() == m) {
+						d ++;
+						tmpDate.setDate(d);
+					}
+					return d - 1;
+				};
+				Date.prototype.getFirstDay = function() {
+					var tmpDate = new Date(Date.parse(this));
+					tmpDate.setDate(1);
+					return tmpDate.getDay();
+				};
+				Date.prototype.getWeekNumber = function() {
+					var tempDate = new Date(this);
+					tempDate.setDate(tempDate.getDate() - (tempDate.getDay() + 6) % 7 + 3);
+					var dms = tempDate.valueOf();
+					tempDate.setMonth(0);
+					tempDate.setDate(4);
+					return Math.round((dms - tempDate.valueOf()) / (604800000)) + 1;
+				};
+				Date.prototype.getDayOfYear = function() {
+					var now = new Date(this.getFullYear(), this.getMonth(), this.getDate(), 0, 0, 0);
+					var then = new Date(this.getFullYear(), 0, 0, 0, 0, 0);
+					var time = now - then;
+					return Math.floor(time / 24*60*60*1000);
+				};
+			},
+			layout = function (el) {
+				var options = $(el).data('datepicker');
+				var cal = $('#' + options.id);
+				if (!options.extraHeight) {
+					var divs = $(el).find('div');
+					options.extraHeight = divs.get(0).offsetHeight + divs.get(1).offsetHeight;
+					options.extraWidth = divs.get(2).offsetWidth + divs.get(3).offsetWidth;
+				}
+				var tbl = cal.find('table:first').get(0);
+				var width = tbl.offsetWidth;
+				var height = tbl.offsetHeight;
+				cal.css({
+					width: width + options.extraWidth + 'px',
+					height: height + options.extraHeight + 'px'
+				}).find('div.datepickerContainer').css({
+					width: width + 'px',
+					height: height + 'px'
+				});
+			},
+			click = function(ev) {
+				// edit 29 Aug 2020: newer browsers seem to target nav <img> rather than <span> or <a> tag
+				if ($(ev.target).is('img')){
+					ev.target = ev.target.parentNode;
+					console.log('target is now '+ev.target);
+				}
+				if ($(ev.target).is('span')) {
+					ev.target = ev.target.parentNode;
+				}
+				var el = $(ev.target);
+				if (el.is('a')) {
+					ev.target.blur();
+					if (el.hasClass('datepickerDisabled')) {
+						return false;
+					}
+					var options = $(this).data('datepicker');
+					var parentEl = el.parent();
+					var tblEl = parentEl.parent().parent().parent();
+					var tblIndex = $('table', this).index(tblEl.get(0)) - 1;
+					var tmp = new Date(options.current);
+					var changed = false;
+					var fillIt = false;
+					if (parentEl.is('th')) {
+						if (parentEl.hasClass('datepickerWeek') && options.mode == 'range' && !parentEl.next().hasClass('datepickerDisabled')) {
+							var val = parseInt(parentEl.next().text(), 10);
+							tmp.addMonths(tblIndex - Math.floor(options.calendars/2));
+							if (parentEl.next().hasClass('datepickerNotInMonth')) {
+								tmp.addMonths(val > 15 ? -1 : 1);
+							}
+							tmp.setDate(val);
+							options.date[0] = (tmp.setHours(0,0,0,0)).valueOf();
+							tmp.setHours(23,59,59,0);
+							tmp.addDays(6);
+							options.date[1] = tmp.valueOf();
+							fillIt = true;
+							changed = true;
+							options.lastSel = false;
+						} else if (parentEl.hasClass('datepickerMonth')) {
+							tmp.addMonths(tblIndex - Math.floor(options.calendars/2));
+							switch (tblEl.get(0).className) {
+								case 'datepickerViewDays':
+									tblEl.get(0).className = 'datepickerViewMonths';
+									el.find('span').text(tmp.getFullYear());
+									break;
+								case 'datepickerViewMonths':
+									tblEl.get(0).className = 'datepickerViewYears';
+									el.find('span').text((tmp.getFullYear()-6) + ' - ' + (tmp.getFullYear()+5));
+									break;
+								case 'datepickerViewYears':
+									tblEl.get(0).className = 'datepickerViewDays';
+									el.find('span').text(formatDate(tmp, 'B, Y'));
+									break;
+							}
+						} else if (parentEl.parent().parent().is('thead')) {
+							switch (tblEl.get(0).className) {
+								case 'datepickerViewDays':
+									options.current.addMonths(parentEl.hasClass('datepickerGoPrev') ? -1 : 1);
+									break;
+								case 'datepickerViewMonths':
+									options.current.addYears(parentEl.hasClass('datepickerGoPrev') ? -1 : 1);
+									break;
+								case 'datepickerViewYears':
+									options.current.addYears(parentEl.hasClass('datepickerGoPrev') ? -12 : 12);
+									break;
+							}
+							fillIt = true;
+						}
+					} else if (parentEl.is('td') && !parentEl.hasClass('datepickerDisabled')) {
+						switch (tblEl.get(0).className) {
+							case 'datepickerViewMonths':
+								options.current.setMonth(tblEl.find('tbody.datepickerMonths td').index(parentEl));
+								options.current.setFullYear(parseInt(tblEl.find('thead th.datepickerMonth span').text(), 10));
+								options.current.addMonths(Math.floor(options.calendars/2) - tblIndex);
+								tblEl.get(0).className = 'datepickerViewDays';
+								break;
+							case 'datepickerViewYears':
+								options.current.setFullYear(parseInt(el.text(), 10));
+								tblEl.get(0).className = 'datepickerViewMonths';
+								break;
+							default:
+								var val = parseInt(el.text(), 10);
+								tmp.addMonths(tblIndex - Math.floor(options.calendars/2));
+								if (parentEl.hasClass('datepickerNotInMonth')) {
+									tmp.addMonths(val > 15 ? -1 : 1);
+								}
+								tmp.setDate(val);
+								switch (options.mode) {
+									case 'multiple':
+										val = (tmp.setHours(0,0,0,0)).valueOf();
+										if ($.inArray(val, options.date) > -1) {
+											$.each(options.date, function(nr, dat){
+												if (dat == val) {
+													options.date.splice(nr,1);
+													return false;
+												}
+											});
+										} else {
+											options.date.push(val);
+										}
+										break;
+									case 'range':
+										if (!options.lastSel) {
+											options.date[0] = (tmp.setHours(0,0,0,0)).valueOf();
+										}
+										val = (tmp.setHours(23,59,59,0)).valueOf();
+										if (val < options.date[0]) {
+											options.date[1] = options.date[0] + 86399000;
+											options.date[0] = val - 86399000;
+										} else {
+											options.date[1] = val;
+										}
+										options.lastSel = !options.lastSel;
+										break;
+									default:
+										options.date = tmp.valueOf();
+										break;
+								}
+								break;
+						}
+						fillIt = true;
+						changed = true;
+					}
+					if (fillIt) {
+						fill(this);
+					}
+					if (changed) {
+						options.onChange.apply(this, prepareDate(options));
+					}
+				}
+				return false;
+			},
+			prepareDate = function (options) {
+				var tmp;
+				if (options.mode == 'single') {
+					tmp = new Date(options.date);
+					return [formatDate(tmp, options.format), tmp, options.el];
+				} else {
+					tmp = [[],[], options.el];
+					$.each(options.date, function(nr, val){
+						var date = new Date(val);
+						tmp[0].push(formatDate(date, options.format));
+						tmp[1].push(date);
+					});
+					return tmp;
+				}
+			},
+			getViewport = function () {
+				var m = document.compatMode == 'CSS1Compat';
+				return {
+					l : window.pageXOffset || (m ? document.documentElement.scrollLeft : document.body.scrollLeft),
+					t : window.pageYOffset || (m ? document.documentElement.scrollTop : document.body.scrollTop),
+					w : window.innerWidth || (m ? document.documentElement.clientWidth : document.body.clientWidth),
+					h : window.innerHeight || (m ? document.documentElement.clientHeight : document.body.clientHeight)
+				};
+			},
+			isChildOf = function(parentEl, el, container) {
+				if (parentEl == el) {
+					return true;
+				}
+				if (parentEl.contains) {
+					return parentEl.contains(el);
+				}
+				if ( parentEl.compareDocumentPosition ) {
+					return !!(parentEl.compareDocumentPosition(el) & 16);
+				}
+				var prEl = el.parentNode;
+				while(prEl && prEl != container) {
+					if (prEl == parentEl)
+						return true;
+					prEl = prEl.parentNode;
+				}
+				return false;
+			},
+			show = function (ev) {
+				var cal = $('#' + $(this).data('datepickerId'));
+				if (!cal.is(':visible')) {
+					var calEl = cal.get(0);
+					fill(calEl);
+					var options = cal.data('datepicker');
+					options.onBeforeShow.apply(this, [cal.get(0)]);
+					var pos = $(this).offset();
+					var viewPort = getViewport();
+					var top = pos.top;
+					var left = pos.left;
+					var oldDisplay = $.curCSS(calEl, 'display');
+					cal.css({
+						visibility: 'hidden',
+						display: 'block'
+					});
+					layout(calEl);
+					switch (options.position){
+						case 'top':
+							top -= calEl.offsetHeight;
+							break;
+						case 'left':
+							left -= calEl.offsetWidth;
+							break;
+						case 'right':
+							left += this.offsetWidth;
+							break;
+						case 'bottom':
+							top += this.offsetHeight;
+							break;
+					}
+					if (top + calEl.offsetHeight > viewPort.t + viewPort.h) {
+						top = pos.top  - calEl.offsetHeight;
+					}
+					if (top < viewPort.t) {
+						top = pos.top + this.offsetHeight + calEl.offsetHeight;
+					}
+					if (left + calEl.offsetWidth > viewPort.l + viewPort.w) {
+						left = pos.left - calEl.offsetWidth;
+					}
+					if (left < viewPort.l) {
+						left = pos.left + this.offsetWidth
+					}
+					cal.css({
+						visibility: 'visible',
+						display: 'block',
+						top: top + 'px',
+						left: left + 'px'
+					});
+					if (options.onShow.apply(this, [cal.get(0)]) != false) {
+						cal.show();
+					}
+					$(document).bind('mousedown', {cal: cal, trigger: this}, hide);
+				}
+				return false;
+			},
+			hide = function (ev) {
+				if (ev.target != ev.data.trigger && !isChildOf(ev.data.cal.get(0), ev.target, ev.data.cal.get(0))) {
+					if (ev.data.cal.data('datepicker').onHide.apply(this, [ev.data.cal.get(0)]) != false) {
+						ev.data.cal.hide();
+					}
+					$(document).unbind('mousedown', hide);
+				}
+			};
+		return {
+			init: function(options){
+				options = $.extend({}, defaults, options||{});
+				extendDate(options.locale);
+				options.calendars = Math.max(1, parseInt(options.calendars,10)||1);
+				options.mode = /single|multiple|range/.test(options.mode) ? options.mode : 'single';
+				return this.each(function(){
+					if (!$(this).data('datepicker')) {
+						options.el = this;
+						if (options.date.constructor == String) {
+							options.date = parseDate(options.date, options.format);
+							options.date.setHours(0,0,0,0);
+						}
+						if (options.mode != 'single') {
+							if (options.date.constructor != Array) {
+								options.date = [options.date.valueOf()];
+								if (options.mode == 'range') {
+									options.date.push(((new Date(options.date[0])).setHours(23,59,59,0)).valueOf());
+								}
+							} else {
+								for (var i = 0; i < options.date.length; i++) {
+									options.date[i] = (parseDate(options.date[i], options.format).setHours(0,0,0,0)).valueOf();
+								}
+								if (options.mode == 'range') {
+									options.date[1] = ((new Date(options.date[1])).setHours(23,59,59,0)).valueOf();
+								}
+							}
+						} else {
+							options.date = options.date.valueOf();
+						}
+						if (!options.current) {
+							options.current = new Date();
+						} else {
+							options.current = parseDate(options.current, options.format);
+						} 
+						options.current.setDate(1);
+						options.current.setHours(0,0,0,0);
+						var id = 'datepicker_' + parseInt(Math.random() * 1000), cnt;
+						options.id = id;
+						$(this).data('datepickerId', options.id);
+						var cal = $(tpl.wrapper).attr('id', id).bind('click', click).data('datepicker', options);
+						if (options.className) {
+							cal.addClass(options.className);
+						}
+						var html = '';
+						for (var i = 0; i < options.calendars; i++) {
+							cnt = options.starts;
+							if (i > 0) {
+								html += tpl.space;
+							}
+							html += tmpl(tpl.head.join(''), {
+									week: options.locale.weekMin,
+									prev: options.prev,
+									next: options.next,
+									day1: options.locale.daysMin[(cnt++)%7],
+									day2: options.locale.daysMin[(cnt++)%7],
+									day3: options.locale.daysMin[(cnt++)%7],
+									day4: options.locale.daysMin[(cnt++)%7],
+									day5: options.locale.daysMin[(cnt++)%7],
+									day6: options.locale.daysMin[(cnt++)%7],
+									day7: options.locale.daysMin[(cnt++)%7]
+								});
+						}
+						cal
+							.find('tr:first').append(html)
+								.find('table').addClass(views[options.view]);
+						fill(cal.get(0));
+						if (options.flat) {
+							cal.appendTo(this).show().css('position', 'relative');
+							layout(cal.get(0));
+						} else {
+							cal.appendTo(document.body);
+							$(this).bind(options.eventName, show);
+						}
+					}
+				});
+			},
+			showPicker: function() {
+				return this.each( function () {
+					if ($(this).data('datepickerId')) {
+						show.apply(this);
+					}
+				});
+			},
+			hidePicker: function() {
+				return this.each( function () {
+					if ($(this).data('datepickerId')) {
+						$('#' + $(this).data('datepickerId')).hide();
+					}
+				});
+			},
+			setDate: function(date, shiftTo){
+				return this.each(function(){
+					if ($(this).data('datepickerId')) {
+						var cal = $('#' + $(this).data('datepickerId'));
+						var options = cal.data('datepicker');
+						options.date = date;
+						if (options.date.constructor == String) {
+							options.date = parseDate(options.date, options.format);
+							options.date.setHours(0,0,0,0);
+						}
+						if (options.mode != 'single') {
+							if (options.date.constructor != Array) {
+								options.date = [options.date.valueOf()];
+								if (options.mode == 'range') {
+									options.date.push(((new Date(options.date[0])).setHours(23,59,59,0)).valueOf());
+								}
+							} else {
+								for (var i = 0; i < options.date.length; i++) {
+									options.date[i] = (parseDate(options.date[i], options.format).setHours(0,0,0,0)).valueOf();
+								}
+								if (options.mode == 'range') {
+									options.date[1] = ((new Date(options.date[1])).setHours(23,59,59,0)).valueOf();
+								}
+							}
+						} else {
+							options.date = options.date.valueOf();
+						}
+						if (shiftTo) {
+							options.current = new Date (options.mode != 'single' ? options.date[0] : options.date);
+						}
+						fill(cal.get(0));
+					}
+				});
+			},
+			getDate: function(formated) {
+				if (this.size() > 0) {
+					return prepareDate($('#' + $(this).data('datepickerId')).data('datepicker'))[formated ? 0 : 1];
+				}
+			},
+			clear: function(){
+				return this.each(function(){
+					if ($(this).data('datepickerId')) {
+						var cal = $('#' + $(this).data('datepickerId'));
+						var options = cal.data('datepicker');
+						if (options.mode != 'single') {
+							options.date = [];
+							fill(cal.get(0));
+						}
+					}
+				});
+			},
+			fixLayout: function(){
+				return this.each(function(){
+					if ($(this).data('datepickerId')) {
+						var cal = $('#' + $(this).data('datepickerId'));
+						var options = cal.data('datepicker');
+						if (options.flat) {
+							layout(cal.get(0));
+						}
+					}
+				});
+			}
+		};
+	}();
+	$.fn.extend({
+		DatePicker: DatePicker.init,
+		DatePickerHide: DatePicker.hidePicker,
+		DatePickerShow: DatePicker.showPicker,
+		DatePickerSetDate: DatePicker.setDate,
+		DatePickerGetDate: DatePicker.getDate,
+		DatePickerClear: DatePicker.clear,
+		DatePickerLayout: DatePicker.fixLayout
+	});
+})(jQuery);
+
+(function(){
+  var cache = {};
+ 
+  this.tmpl = function tmpl(str, data){
+    // Figure out if we're getting a template, or if we need to
+    // load the template - and be sure to cache the result.
+    var fn = !/\W/.test(str) ?
+      cache[str] = cache[str] ||
+        tmpl(document.getElementById(str).innerHTML) :
+     
+      // Generate a reusable function that will serve as a template
+      // generator (and which will be cached).
+      new Function("obj",
+        "var p=[],print=function(){p.push.apply(p,arguments);};" +
+       
+        // Introduce the data as local variables using with(){}
+        "with(obj){p.push('" +
+       
+        // Convert the template into pure JavaScript
+        str
+          .replace(/[\r\t\n]/g, " ")
+          .split("<%").join("\t")
+          .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+          .replace(/\t=(.*?)%>/g, "',$1,'")
+          .split("\t").join("');")
+          .split("%>").join("p.push('")
+          .split("\r").join("\\'")
+      + "');}return p.join('');");
+   
+    // Provide some basic currying to the user
+    return data ? fn( data ) : fn;
+  };
+})();

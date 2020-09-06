@@ -4,7 +4,7 @@ Tags: press releases, events, news, custom post type
 Requires at least: 3.3.1
 Requires PHP: 7.1
 Tested up to: 5.5
-Stable tag: 1.3
+Stable tag: 1.4
 
 Create custom post types for press releases, references to external news stories, and events organized and filtered by custom categories.
 
@@ -41,6 +41,13 @@ I don’t know that.  AAAAAAAAAAAAAARGH!
 3. Global options for the plugin.
 
 == Changelog ==
+
+= 1.4 =
+* More code fixes for PHP 7.4
+* Error-handling for when no posts of type exist
+* Fixed non-responsive Date Picker arrows
+* Re-styled Date Picker to look more modern
+* Date Picker script and admin files now ONLY enqueue on PNEX post pages.
 
 = 1.3 =
 * Code updated for PHP 7+ (tested up to 7.4.8)

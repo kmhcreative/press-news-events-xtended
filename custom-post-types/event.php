@@ -109,7 +109,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 							type="text"
 							size="7"
 							name="pne_event[start_time]"
-							value="<?php echo esc_attr(date('g:ia', $starts)); ?>"
+							value="<?php echo esc_attr(date('g:ia', (int)$starts)); ?>"
 							placeholder="<?php echo esc_attr(__("6:30pm", 'press-news-events')); ?>"
 						/>
 						<?php echo _x("to", 'starting time *to* ending time', 'press-news-events'); ?>
@@ -117,7 +117,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 							type="text"
 							size="7"
 							name="pne_event[end_time]"
-							value="<?php echo esc_attr(date('g:ia', $ends)); ?>"
+							value="<?php echo esc_attr(date('g:ia', (int)$ends)); ?>"
 							placeholder="<?php echo esc_attr(__("9:30pm", 'press-news-events')); ?>"
 						/>
 					</p>
@@ -218,7 +218,7 @@ class PNE_Event extends PNE_Custom_Post_Type {
 		$rules = get_option('rewrite_rules');
 		foreach ($this->rewrite_rules as $rule => $rewrite) {
 			if (!isset($rules[$rule])) {
-				Press_News_Events::flush_rules();
+				(new Press_News_Events)->flush_rules();
 				break;
 			}
 		}

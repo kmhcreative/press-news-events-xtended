@@ -77,7 +77,7 @@ class PNE_Press_Release extends PNE_Custom_Post_Type {
 
 	function inject_boilerplate($content) {
 		global $post;
-		if ($post->post_type == $this->slug) {
+		if (isset($post->post_type) && $post->post_type == $this->slug) {
 			$content .= get_option('pne_press_release_boilderplate');
 		}
 		return $content;
